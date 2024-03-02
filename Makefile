@@ -12,6 +12,9 @@ local-logs:
 local-run:
 	go run ./cmd/api
 
+local-run-watch:
+	air
+
 local-inspect-shema:
 	atlas schema inspect -u "postgres://exampleuser:exampleuser@0.0.0.0:5432/exampledb?search_path=public&sslmode=disable" --format "{{ sql . }}"
 
@@ -25,3 +28,6 @@ local-migrate:
 	atlas migrate apply \
 	--dir "file://internal/infrastructure/db/migrations" \
 	--url "postgres://exampleuser:exampleuser@0.0.0.0:5432/exampledb?search_path=public&sslmode=disable"
+
+swagger-gen:
+	swag init -g cmd/api/main.go

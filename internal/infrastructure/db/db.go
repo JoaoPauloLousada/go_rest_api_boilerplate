@@ -9,7 +9,6 @@ import (
 )
 
 func ConnectDB(config configuration.Config) (*sqlx.DB, error) {
-	// dsn := "user=" + config.DBUser + " dbname=" + config.DBName + " sslmode=" + config.DBSSL
 	dsn := fmt.Sprintf("host=%s port=%d user=%s "+
 		"password=%s dbname=%s sslmode=%s",
 		config.DBHost, config.DBPort, config.DBUser, config.DBPass, config.DBName, config.DBSSL)

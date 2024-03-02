@@ -1,6 +1,10 @@
 package configuration
 
-import "github.com/spf13/viper"
+import (
+	"fmt"
+
+	"github.com/spf13/viper"
+)
 
 type Config struct {
 	ApiPort int    `mapstructure:"API_PORT"`
@@ -9,6 +13,7 @@ type Config struct {
 	DBUser  string `mapstructure:"DB_USER"`
 	DBPass  string `mapstructure:"DB_PASS"`
 	DBName  string `mapstructure:"DB_NAME"`
+	DBSSL   string `mapstructure:"DB_SSL"`
 }
 
 func LoadConfig() (config Config, err error) {
@@ -20,5 +25,11 @@ func LoadConfig() (config Config, err error) {
 	}
 
 	err = viper.Unmarshal(&config)
+	if err != nil {
+		return
+	}
+
+	fmt.Printf("%s\u2714 Configuration has been loaded%s\n", "\033[32m", "\033[0m")
+
 	return
 }

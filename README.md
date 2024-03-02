@@ -15,3 +15,5 @@ steps:
 - install swagger fiber middleware
 - - go get -u github.com/swaggo/fiber-swagger
 - add swagger routes
+- install atlas
+- - curl -sSf https://atlasgo.sh | sh
